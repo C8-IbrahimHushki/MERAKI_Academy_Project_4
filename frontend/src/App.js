@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Favorites from "./components/Favorites";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import Calculator from "./components/Calculator";
 import { createContext, useState } from "react";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/users/register" element={<Register />} />
+          <Route path="/users/login" element={<Login />} />
           <Route path="/calculator" element={<Calculator />} />
         </Routes>
       </div>
