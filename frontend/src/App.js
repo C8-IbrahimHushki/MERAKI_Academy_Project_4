@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Calculator from "./components/Calculator";
+import Tracker from "./components/Tracker";
 import { createContext, useState } from "react";
 
 export const Context = createContext();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/tracker" element={<Tracker />} />
         </Routes>
       </div>
     </Context.Provider>

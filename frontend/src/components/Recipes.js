@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
 
-
   useEffect(() => {
     const getRecipes = async () => {
       try {
@@ -19,12 +18,48 @@ const Recipes = () => {
       }
     };
 
-    getRecipes();
+    // getRecipes();
   }, []);
   return (
     <div>
       <Link to="/">Back</Link>
       <h2>Recipes:</h2>
+      <div className="recipe-navbar">
+        <label for="search">Recipe Name:&nbsp;</label>
+        <input name="search" type="search" placeholder="Recipe Name" />
+        <label for="calories">Calories:&nbsp;</label>
+        <input
+          name="calories"
+          type="number"
+          min="1"
+          placeholder="Calorie Amount"
+        />
+        <label for="protein">Protein:&nbsp;</label>
+        <input
+          name="protein"
+          type="number"
+          min="1"
+          placeholder="Protein Amount"
+        />
+        <label for="preferences">Preferences: &nbsp;</label>
+        <select name="preferences">
+          <option value="">Anything</option>
+          <option value="gluten-free">Gluten-free</option>
+          <option value="lactose-free">Lactose-free</option>
+          <option value="paleo">Paleo</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="vegetarian">Vegetarian</option>
+        </select>
+        <label for="meal-type">Meal Type:&nbsp;</label>
+        <select name="meal-type">
+          <option value="">Anything</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch/dinner">Lunch / Dinner</option>
+          <option value="snack">Snack</option>
+        </select>
+        <button>Search</button>
+      </div>
       {recipes &&
         recipes.map((recipe, i) => (
           <div key={i}>

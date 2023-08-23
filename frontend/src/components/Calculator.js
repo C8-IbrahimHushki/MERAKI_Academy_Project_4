@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Calculator = () => {
   return (
     <div>
-        <Link to="/">Back</Link>
+      <Link to="/">Back</Link>
       <h2>Calculator</h2>
       <label for="gender">Gender:&nbsp;</label>
       <select name="gender">
@@ -16,13 +16,13 @@ const Calculator = () => {
       <input name="height" placeholder="Height" />
       <p>cm</p>
       <label for="weight">Weight:&nbsp;</label>
-      <input name="weight" placeholder="Weight" />
+      <input name="weight" type="number" min="1" max="300" placeholder="Weight" />
       <p>kg</p>
       <label for="age">Age:&nbsp;</label>
-      <input name="age" placeholder="Age" />
+      <input name="age" type="number" min="1" max="100" placeholder="Age" />
       <br />
       <label for="goal-weight">Goal Weight:&nbsp;</label>
-      <input name="goal-weight" placeholder="Goal Weight" />
+      <input name="goal-weight" type="number" min="20" max="300" placeholder="Goal Weight" />
       <br />
       <label for="goal">Goal:&nbsp;</label>
       <select name="goal">
