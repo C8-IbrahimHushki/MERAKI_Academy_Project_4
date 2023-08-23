@@ -1,12 +1,30 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
 
 const Navbar = () => {
-    const {isLoggedIn} = useContext(Context)
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(Context);
   return (
     <div>
-        {isLoggedIn === false ? <Link to="/favorites">Favorites</Link> : null}
+      {isLoggedIn === true ? (
+        <>
+          <Link to="/favorites">Favorites</Link>
+          <button
+            onClick={() => {
+              setIsLoggedIn(false);
+              navigate("/");
+            }}
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link to="/users/register">Register</Link>
+          <Link to="/users/login">Log In</Link>
+        </>
+      )}
     </div>
   );
 };

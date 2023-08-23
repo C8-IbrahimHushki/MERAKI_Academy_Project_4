@@ -4,6 +4,8 @@ import Recipes from "./components/Recipes";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites";
 import Navbar from "./components/Navbar";
+import Register from "./components/Register";
+import Calculator from "./components/Calculator";
 import { createContext, useState } from "react";
 
 export const Context = createContext();
@@ -19,6 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/users/register" element={<Register />} />
+          <Route path="/calculator" element={<Calculator />} />
         </Routes>
       </div>
     </Context.Provider>
