@@ -8,11 +8,19 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const {isLoggedIn,setIsLoggedIn } = useContext(Context);
+  const { setIsLoggedIn } = useContext(Context);
 
   const loggedUser = {
     email: email,
     password: password,
+  };
+
+  const clearMessage = () => {
+    setMessage("");
+  };
+
+  const clearMessageTimeout = () => {
+    setTimeout(clearMessage, 5000);
   };
 
   const loginUser = () => {
@@ -20,12 +28,12 @@ const Login = () => {
       .post(`http://localhost:5000/users/login`, loggedUser)
       .then((response) => {
         setIsLoggedIn(true);
-        localStorage.setItem("isLoggedIn", isLoggedIn)
+        localStorage.setItem("isLoggedIn", true);
         console.log(response);
-        navigate(-1)
+        navigate(-1);
       })
       .catch((err) => {
-        setMessage(err.response.data.message)
+        setMessage(err.response.data.message);
       });
   };
 
@@ -56,10 +64,12 @@ const Login = () => {
       <button
         onClick={() => {
           loginUser();
+          clearMessageTimeout();
         }}
       >
         Log In
       </button>
+      <h2>{message}</h2>
     </div>
   );
 };

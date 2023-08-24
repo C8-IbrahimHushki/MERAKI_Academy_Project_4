@@ -13,6 +13,7 @@ const Navbar = () => {
           <button
             onClick={() => {
               setIsLoggedIn(false);
+              localStorage.clear();
               navigate("/");
             }}
           >

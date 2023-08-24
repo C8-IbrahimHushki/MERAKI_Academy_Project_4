@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const Register = () => {
+const [userName, setUserName] = useState("")
+
+
   return (
     <div>
       <Link to="/">Back</Link>
