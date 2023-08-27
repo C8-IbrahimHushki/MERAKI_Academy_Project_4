@@ -40,3 +40,5 @@ const saveUserData = (req, res) => {
       console.log(err);
     });
 };
+
+module.exports = {saveUserData};
