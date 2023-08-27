@@ -20,17 +20,17 @@ const register = (req, res) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(404).json({
+      res.status(500).json({
         success: false,
-        error: err,
+        message: `Server Error`,
+        err: err.message,
       });
     });
 };
 
 const login = (req, res) => {
   const password = req.body.password;
-  const email = req.body.email
+  const email = req.body.email;
   usersModel
     .findOne({ email })
     .then(async (result) => {
@@ -50,7 +50,7 @@ const login = (req, res) => {
         }
         res.status(200).json({
           success: true,
-          message: `Valid login credentials`
+          message: `Valid login credentials`,
         });
       } catch (error) {
         throw new Error(error.message);
