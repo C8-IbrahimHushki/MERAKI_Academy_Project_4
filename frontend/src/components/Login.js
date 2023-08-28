@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../App";
 import axios from "axios";
+import { Context } from "../App";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const { setIsLoggedIn } = useContext(Context);
+  const {setIsLoggedIn} = useContext(Context)
 
   const loggedUser = {
     email: email,
@@ -26,10 +26,9 @@ const Login = () => {
   const loginUser = () => {
     axios
       .post(`http://localhost:5000/users/login`, loggedUser)
-      .then((response) => {
-        setIsLoggedIn(true);
+      .then(() => {
+        setIsLoggedIn(true)
         localStorage.setItem("isLoggedIn", true);
-        console.log(response);
         navigate(-1);
       })
       .catch((err) => {

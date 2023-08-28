@@ -13,7 +13,9 @@ import { createContext, useState } from "react";
 export const Context = createContext();
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    JSON.parse(localStorage.getItem("isLoggedIn")) || false
+  );
   return (
     <Context.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <div className="App">
