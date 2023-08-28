@@ -22,7 +22,7 @@ const Recipes = () => {
   }, []);
   return (
     <div>
-      <Link to="/">Back</Link>
+      <Link to="/">&lt;&lt; Back</Link>
       <h2>Recipes:</h2>
       <div className="recipe-navbar">
         <label for="search">Recipe Name:&nbsp;</label>

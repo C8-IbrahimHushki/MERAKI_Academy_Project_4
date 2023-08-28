@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const {setIsLoggedIn} = useContext(Context)
+  const { setIsLoggedIn } = useContext(Context);
 
   const loggedUser = {
     email: email,
@@ -27,7 +27,7 @@ const Login = () => {
     axios
       .post(`http://localhost:5000/users/login`, loggedUser)
       .then(() => {
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", true);
         navigate(-1);
       })
@@ -38,7 +38,7 @@ const Login = () => {
 
   return (
     <div>
-      <Link to="/">Back</Link>
+      <Link to="/">&lt;&lt; Back</Link>
       <h2>Log In</h2>
       <label for="email">Email:&nbsp;</label>
       <input
@@ -68,6 +68,12 @@ const Login = () => {
       >
         Log In
       </button>
+      <br />
+      <p>
+        Don't have an account?{" "}
+        {<Link to="/users/register">Click here to register</Link>}
+      </p>
+
       <h2>{message}</h2>
     </div>
   );

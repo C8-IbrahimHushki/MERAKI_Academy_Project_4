@@ -37,7 +37,7 @@ const Register = () => {
 
   return (
     <div>
-      <Link to="/">Back</Link>
+      <Link to="/">&lt;&lt; Back</Link>
       <h2>Register</h2>
       <label for="userName">Username:&nbsp;</label>
       <input
@@ -90,6 +90,11 @@ const Register = () => {
       >
         Register
       </button>
+      <br />
+      <p>
+        Already have an account?{" "}
+        {<Link to="/users/login">Click here to log in</Link>}
+      </p>
       <h2>{message}</h2>
     </div>
   );

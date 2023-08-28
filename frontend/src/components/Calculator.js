@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../App";
 
 const Calculator = () => {
   const [gender, setGender] = useState("male");
@@ -14,6 +15,7 @@ const Calculator = () => {
   const [calorieIntake, setCalorieIntake] = useState(null);
   const [proteinIntake, setProteinIntake] = useState(null);
   const [message, setMessage] = useState("");
+  const { isLoggedIn } = useContext(Context);
 
   const userData = {
     gender: gender,
@@ -145,137 +147,152 @@ const Calculator = () => {
 
   return (
     <div>
-      <Link to="/">Back</Link>
-      <h2>Calculator</h2>
-      {/* GENDER ELEMENT */}
-      <label for="gender">Gender:&nbsp;</label>
-      <select
-        name="gender"
-        onChange={(e) => {
-          setGender(e.target.value);
-        }}
-      >
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <br />
-      {/* AGE ELEMENT */}
-      <label for="age">Age:&nbsp;</label>
-      <input
-        name="age"
-        type="number"
-        min="1"
-        max="100"
-        placeholder="Age"
-        onChange={(e) => {
-          setAge(e.target.value);
-        }}
-      />
-      <br />
-      {/* HEIGHT ELEMENT */}
-      <label for="height">Height:&nbsp;</label>
-      <input
-        name="height"
-        type="number"
-        min="40"
-        max="230"
-        placeholder="Height"
-        onChange={(e) => {
-          setHeight(e.target.value);
-        }}
-      />
-      <p>cm</p>
-      {/* WEIGHT ELEMENT */}
-      <label for="weight">Weight:&nbsp;</label>
-      <input
-        name="weight"
-        type="number"
-        min="1"
-        max="300"
-        placeholder="Weight"
-        onChange={(e) => {
-          setWeight(e.target.value);
-        }}
-      />
-      <p>kg</p>
-      {/* GOAL WEIGHT ELEMENT */}
-      <label for="goal-weight">Goal Weight:&nbsp;</label>
-      <input
-        name="goal-weight"
-        type="number"
-        min="20"
-        max="300"
-        placeholder="Goal Weight"
-        onChange={(e) => {
-          setGoalWeight(e.target.value);
-        }}
-      />
-      <br />
-      {/* GOAL ELEMENT */}
-      <label for="goal">Goal:&nbsp;</label>
-      <select
-        name="goal"
-        onChange={(e) => {
-          setGoal(e.target.value);
-        }}
-      >
-        {availableGoalOptions.map((option) => (
-          <option value={option}>
-            {option.charAt(0).toUpperCase() + option.slice(1)}
-          </option>
-        ))}
-      </select>
+      <Link to="/">&lt;&lt; Back</Link>
+      <h3>Calculator</h3>
+      {isLoggedIn !== true ? (
+        <h2>
+          Log in or register to calculate your recommended nutritional intake
+          and reach your goals
+        </h2>
+      ) : (
+        <>
+          {/* GENDER ELEMENT */}
+          <label for="gender">Gender:&nbsp;</label>
+          <select
+            name="gender"
+            onChange={(e) => {
+              setGender(e.target.value);
+            }}
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <br />
+          {/* AGE ELEMENT */}
+          <label for="age">Age:&nbsp;</label>
+          <input
+            name="age"
+            type="number"
+            min="1"
+            max="100"
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+          />
+          <label for="age">&nbsp;Years</label>
+          <br />
+          {/* HEIGHT ELEMENT */}
+          <label for="height">Height:&nbsp;</label>
+          <input
+            name="height"
+            type="number"
+            min="40"
+            max="230"
+            onChange={(e) => {
+              setHeight(e.target.value);
+            }}
+          />
+          <label for="height">&nbsp;cm</label>
+          <br />
+          {/* WEIGHT ELEMENT */}
+          <label for="weight">Weight:&nbsp;</label>
+          <input
+            name="weight"
+            type="number"
+            min="1"
+            max="300"
+            onChange={(e) => {
+              setWeight(e.target.value);
+            }}
+          />
+          <label for="weight">&nbsp;kg</label>
+          <br />
+          {/* GOAL WEIGHT ELEMENT */}
+          <label for="goal-weight">Goal Weight:&nbsp;</label>
+          <input
+            name="goal-weight"
+            type="number"
+            min="20"
+            max="300"
+            onChange={(e) => {
+              setGoalWeight(e.target.value);
+            }}
+          />
+          <label for="goal">&nbsp;kg</label>
+          <br />
+          {/* GOAL ELEMENT */}
+          <label for="goal">Goal:&nbsp;</label>
+          <select
+            name="goal"
+            onChange={(e) => {
+              setGoal(e.target.value);
+            }}
+          >
+            {availableGoalOptions.map((option) => (
+              <option value={option}>
+                {option.charAt(0).toUpperCase() + option.slice(1)}
+              </option>
+            ))}
+          </select>
 
-      {/* BODYBUILDING ELEMENT */}
-      <input
-        type="checkbox"
-        name="bodybuilding"
-        onClick={(e) => {
-          setBodyBuilding(e.target.checked);
-        }}
-      />
-      <label for="bodybuilding">Bodybuilding</label>
-      <br />
-      {/* ACTIVITY ELEMENT */}
-      <label for="activity">How active are you on a daily basis?&nbsp;</label>
-      <select
-        name="activity"
-        onChange={(e) => {
-          setActivity(e.target.value);
-        }}
-      >
-        <option value="inactive">Inactive (No Exercise)</option>
-        <option value="light">Lightly Active (Light Exercise)</option>
-        <option value="moderate">Moderately Active (3-5 days/wk)</option>
-        <option value="active">Active (6-7 days/wk)</option>
-        <option value="very">Very Active (Active & Physical Job)</option>
-      </select>
-      <br />
-      {/* BUTTON */}
-      <button
-        onClick={() => {
-          if (bodybuilding === true) {
-            calculateProteinIntake();
-          }
-          calculateCalorieIntake();
-          saveData();
-          clearMessageTimeout();
-        }}
-      >
-        Calculate
-      </button>
-      <h2>{message}</h2>
-      <h2>
-        {calorieIntake !== null ? (
-          <>Recommended Daily Calorie Intake:&nbsp; {calorieIntake} Calories</>
-        ) : null}
-      </h2>
-      <h2>
-        {proteinIntake !== null ? (
-          <>Recommended Daily Protein Intake:&nbsp; {proteinIntake} gm</>
-        ) : null}
-      </h2>
-      {calorieIntake !== null ? <Link to="/recipes">Find Recipes</Link> : null}
+          {/* BODYBUILDING ELEMENT */}
+          <input
+            type="checkbox"
+            name="bodybuilding"
+            onClick={(e) => {
+              setBodyBuilding(e.target.checked);
+            }}
+          />
+          <label for="bodybuilding">Bodybuilding</label>
+          <br />
+          {/* ACTIVITY ELEMENT */}
+          <label for="activity">
+            How active are you on a daily basis?&nbsp;
+          </label>
+          <select
+            name="activity"
+            onChange={(e) => {
+              setActivity(e.target.value);
+            }}
+          >
+            <option value="inactive">Inactive (No Exercise)</option>
+            <option value="light">Lightly Active (Light Exercise)</option>
+            <option value="moderate">Moderately Active (3-5 days/wk)</option>
+            <option value="active">Active (6-7 days/wk)</option>
+            <option value="very">Very Active (Active & Physical Job)</option>
+          </select>
+          <br />
+          {/* BUTTON */}
+          <button
+            onClick={() => {
+              if (bodybuilding === true) {
+                calculateProteinIntake();
+              }
+              calculateCalorieIntake();
+              saveData();
+              clearMessageTimeout();
+            }}
+          >
+            Calculate
+          </button>
+          <h3>{message}</h3>
+          <h3>
+            {calorieIntake !== null ? (
+              <>
+                Recommended Daily Calorie Intake:&nbsp; {calorieIntake} Calories
+              </>
+            ) : null}
+          </h3>
+          <h3>
+            {proteinIntake !== null ? (
+              <>Recommended Daily Protein Intake:&nbsp; {proteinIntake} gm</>
+            ) : null}
+          </h3>
+          {calorieIntake !== null ? (
+            <Link to="/recipes">Find Recipes</Link>
+          ) : null}
+        </>
+      )}
     </div>
   );
 };
