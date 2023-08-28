@@ -38,7 +38,12 @@ const saveUserData = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.status(501).json({
+        success: false,
+        message: "Server Error",
+        error: err,
+      });
     });
 };
 
-module.exports = {saveUserData};
+module.exports = { saveUserData };

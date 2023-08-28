@@ -3,6 +3,6 @@ const { saveUserData } = require("../controllers/calculator");
 
 const calculatorRouter = express.Router();
 
-calculatorRouter.post("/calculator", saveUserData);
+calculatorRouter.post("/", saveUserData);
 
 module.exports = calculatorRouter;

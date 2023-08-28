@@ -1,20 +1,191 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Calculator = () => {
+  const [gender, setGender] = useState("male");
+  const [height, setHeight] = useState(null);
+  const [weight, setWeight] = useState(null);
+  const [age, setAge] = useState(null);
+  const [goalWeight, setGoalWeight] = useState(null);
+  const [goal, setGoal] = useState("lose weight");
+  const [bodybuilding, setBodyBuilding] = useState(false);
+  const [activity, setActivity] = useState("inactive");
+  const [calorieIntake, setCalorieIntake] = useState(null);
+  const [proteinIntake, setProteinIntake] = useState(null);
+  const [message, setMessage] = useState("");
+
+  const userData = {
+    gender: gender,
+    height: height,
+    weight: weight,
+    age: age,
+    goalWeight: goalWeight,
+    goal: goal,
+    bodybuilding: bodybuilding,
+    activity: activity,
+    calorieIntake: calorieIntake,
+    proteinIntake: proteinIntake,
+  };
+
+  const calculateProteinIntake = () => {
+    let leanBodyMass = 0;
+    if (gender === "male") {
+      leanBodyMass = 0.407 * weight + 0.267 * height - 19.2;
+    } else {
+      leanBodyMass = 0.252 * weight + 0.473 * height - 48.3;
+    }
+    setProteinIntake(Math.round(leanBodyMass * 2.2));
+  };
+
+  const getAvailableGoalOptions = () => {
+    if (
+      goalWeight < weight &&
+      goalWeight !== null &&
+      weight !== null &&
+      goalWeight !== 0 &&
+      weight !== 0 &&
+      goalWeight !== "" &&
+      weight !== ""
+    ) {
+      return ["lose weight", "lose weight fast"];
+    } else if (
+      goalWeight > weight &&
+      goalWeight !== null &&
+      weight !== null &&
+      goalWeight !== 0 &&
+      weight !== 0 &&
+      goalWeight !== "" &&
+      weight !== ""
+    ) {
+      return ["gain weight", "gain weight fast"];
+    } else if (
+      goalWeight === weight &&
+      goalWeight !== null &&
+      weight !== null &&
+      goalWeight !== 0 &&
+      weight !== 0 &&
+      goalWeight !== "" &&
+      weight !== ""
+    ) {
+      return ["maintain same weight"];
+    } else {
+      return [
+        "lose weight",
+        "lose weight fast",
+        "maintain same weight",
+        "gain weight",
+        "gain weight fast",
+      ];
+    }
+  };
+
+  const availableGoalOptions = getAvailableGoalOptions();
+
+  const calculateCalorieIntake = () => {
+    if (height !== null && weight !== null && age !== null) {
+      // BMR (BASAL METABOLIC RATE)
+      let basalMetabolicRate = 0;
+      let calorieBasedOnActivity = 0;
+
+      if (gender === "male") {
+        basalMetabolicRate =
+          66.47 + 13.75 * weight + 5.003 * height - 6.755 * age;
+      } else if (gender === "female") {
+        basalMetabolicRate =
+          655.1 + 9.563 * weight + 1.85 * height - 4.676 * age;
+      }
+
+      // ACTIVITY LEVELS
+      if (activity === "inactive") {
+        calorieBasedOnActivity = basalMetabolicRate * 1.2;
+      } else if (activity === "light") {
+        calorieBasedOnActivity = basalMetabolicRate * 1.375;
+      } else if (activity === "moderate") {
+        calorieBasedOnActivity = basalMetabolicRate * 1.55;
+      } else if (activity === "active") {
+        calorieBasedOnActivity = basalMetabolicRate * 1.725;
+      } else if (activity === "very") {
+        calorieBasedOnActivity = basalMetabolicRate * 1.9;
+      }
+
+      // SET CALORIES BASED ON GOAL
+      if (goal === "maintain same weight") {
+        setCalorieIntake(Math.round(calorieBasedOnActivity));
+      } else if (goal === "lose weight") {
+        setCalorieIntake(Math.round(calorieBasedOnActivity - 500));
+      } else if (goal === "lose weight fast") {
+        setCalorieIntake(Math.round(calorieBasedOnActivity - 1000));
+      } else if (goal === "gain weight") {
+        setCalorieIntake(Math.round(calorieBasedOnActivity + 500));
+      } else if (goal === "gain weight fast") {
+        setCalorieIntake(Math.round(calorieBasedOnActivity + 1000));
+      }
+    }
+  };
+
+  const clearMessage = () => {
+    setMessage("");
+  };
+
+  const clearMessageTimeout = () => {
+    setTimeout(clearMessage, 5000);
+  };
+
+  const saveData = () => {
+    axios
+      .post(`http://localhost:5000/calculator`, userData)
+      .then((response) => {
+        setMessage(response.data.message);
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+      });
+  };
+
   return (
     <div>
       <Link to="/">Back</Link>
       <h2>Calculator</h2>
+      {/* GENDER ELEMENT */}
       <label for="gender">Gender:&nbsp;</label>
-      <select name="gender">
+      <select
+        name="gender"
+        onChange={(e) => {
+          setGender(e.target.value);
+        }}
+      >
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
       <br />
+      {/* AGE ELEMENT */}
+      <label for="age">Age:&nbsp;</label>
+      <input
+        name="age"
+        type="number"
+        min="1"
+        max="100"
+        placeholder="Age"
+        onChange={(e) => {
+          setAge(e.target.value);
+        }}
+      />
+      <br />
+      {/* HEIGHT ELEMENT */}
       <label for="height">Height:&nbsp;</label>
-      <input name="height" placeholder="Height" />
+      <input
+        name="height"
+        type="number"
+        min="40"
+        max="230"
+        placeholder="Height"
+        onChange={(e) => {
+          setHeight(e.target.value);
+        }}
+      />
       <p>cm</p>
+      {/* WEIGHT ELEMENT */}
       <label for="weight">Weight:&nbsp;</label>
       <input
         name="weight"
@@ -22,11 +193,12 @@ const Calculator = () => {
         min="1"
         max="300"
         placeholder="Weight"
+        onChange={(e) => {
+          setWeight(e.target.value);
+        }}
       />
       <p>kg</p>
-      <label for="age">Age:&nbsp;</label>
-      <input name="age" type="number" min="1" max="100" placeholder="Age" />
-      <br />
+      {/* GOAL WEIGHT ELEMENT */}
       <label for="goal-weight">Goal Weight:&nbsp;</label>
       <input
         name="goal-weight"
@@ -34,28 +206,76 @@ const Calculator = () => {
         min="20"
         max="300"
         placeholder="Goal Weight"
+        onChange={(e) => {
+          setGoalWeight(e.target.value);
+        }}
       />
       <br />
+      {/* GOAL ELEMENT */}
       <label for="goal">Goal:&nbsp;</label>
-      <select name="goal">
-        <option value="lose-weight">Lose Weight</option>
-        <option value="lose-weight-fast">Lose Weight Fast</option>
-        <option value="maintain-same-weight">Maintain Same Weight</option>
-        <option value="gain-weight">Gain Weight</option>
-        <option value="gain-weight-fast">Gain Weight Fast</option>
+      <select
+        name="goal"
+        onChange={(e) => {
+          setGoal(e.target.value);
+        }}
+      >
+        {availableGoalOptions.map((option) => (
+          <option value={option}>
+            {option.charAt(0).toUpperCase() + option.slice(1)}
+          </option>
+        ))}
       </select>
-      <input type="checkbox" name="bodybuilding" />
+
+      {/* BODYBUILDING ELEMENT */}
+      <input
+        type="checkbox"
+        name="bodybuilding"
+        onClick={(e) => {
+          setBodyBuilding(e.target.checked);
+        }}
+      />
       <label for="bodybuilding">Bodybuilding</label>
       <br />
+      {/* ACTIVITY ELEMENT */}
       <label for="activity">How active are you on a daily basis?&nbsp;</label>
-      <select name="activity">
-        <option value="light">Lightly Active</option>
-        <option value="moderate">Moderately Active</option>
-        <option value="active">Active</option>
-        <option value="very">Very Active</option>
+      <select
+        name="activity"
+        onChange={(e) => {
+          setActivity(e.target.value);
+        }}
+      >
+        <option value="inactive">Inactive (No Exercise)</option>
+        <option value="light">Lightly Active (Light Exercise)</option>
+        <option value="moderate">Moderately Active (3-5 days/wk)</option>
+        <option value="active">Active (6-7 days/wk)</option>
+        <option value="very">Very Active (Active & Physical Job)</option>
       </select>
       <br />
-      <button>Calculate</button>
+      {/* BUTTON */}
+      <button
+        onClick={() => {
+          if (bodybuilding === true) {
+            calculateProteinIntake();
+          }
+          calculateCalorieIntake();
+          saveData();
+          clearMessageTimeout();
+        }}
+      >
+        Calculate
+      </button>
+      <h2>{message}</h2>
+      <h2>
+        {calorieIntake !== null ? (
+          <>Recommended Daily Calorie Intake:&nbsp; {calorieIntake} Calories</>
+        ) : null}
+      </h2>
+      <h2>
+        {proteinIntake !== null ? (
+          <>Recommended Daily Protein Intake:&nbsp; {proteinIntake} gm</>
+        ) : null}
+      </h2>
+      {calorieIntake !== null ? <Link to="/recipes">Find Recipes</Link> : null}
     </div>
   );
 };

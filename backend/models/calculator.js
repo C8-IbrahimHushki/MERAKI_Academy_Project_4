@@ -5,12 +5,12 @@ const calculatorSchema = new mongoose.Schema({
   height: { type: Number, required: true },
   weight: { type: Number, required: true },
   age: { type: Number, required: true },
-  goalWeight: { type: Number, required: true },
+  goalWeight: { type: Number},
   goal: { type: String, required: true },
-  bodyBuilding: { type: Boolean, required: true },
+  bodyBuilding: { type: Boolean },
   activity: { type: String, required: true },
-  calorieIntake: { type: Number, required: true },
-  proteinIntake: { type: Number, required: true },
+  calorieIntake: { type: Number },
+  proteinIntake: { type: Number },
 });
 
 module.exports = mongoose.model("Calculator", calculatorSchema);
