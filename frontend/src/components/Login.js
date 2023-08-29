@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const { setIsLoggedIn } = useContext(Context);
+  const { setIsLoggedIn, setToken } = useContext(Context);
 
   const loggedUser = {
     email: email,
@@ -26,7 +26,9 @@ const Login = () => {
   const loginUser = () => {
     axios
       .post(`http://localhost:5000/users/login`, loggedUser)
-      .then(() => {
+      .then((response) => {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
         setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", true);
         navigate(-1);

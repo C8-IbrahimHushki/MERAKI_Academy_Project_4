@@ -54,7 +54,7 @@ const Tracker = () => {
 
           <progress id="file" value="95" max="100"></progress>
           <label>&nbsp;95%</label>
-          <input type="number" placeholder="Calories" />
+          <input type="number" placeholder="Calories" min="1" max="10000" />
           <button>Add</button>
           <br />
           {changeCalorieGoal === false ? (
@@ -69,7 +69,8 @@ const Tracker = () => {
             </>
           ) : (
             <>
-              <input placeholder="New Goal"></input> <label>kg</label>
+              <input placeholder="New Goal" min="1" max="10000"></input>{" "}
+              <label>kg</label>
               <button>Enter</button>
               <button
                 onClick={() => {
@@ -88,7 +89,7 @@ const Tracker = () => {
 
           <progress id="file" value="95" max="100"></progress>
           <label>&nbsp;95%</label>
-          <input type="number" placeholder="grams" />
+          <input type="number" placeholder="grams" min="1" max="1000" />
           <button>Add</button>
           <br />
           {changeProteinGoal === false ? (
@@ -103,7 +104,8 @@ const Tracker = () => {
             </>
           ) : (
             <>
-              <input placeholder="New Goal"></input> <label>gm</label>
+              <input placeholder="New Goal" min="1" max="1000"></input>{" "}
+              <label>gm</label>
               <button>Enter</button>
               <button
                 onClick={() => {
