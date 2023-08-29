@@ -10,6 +10,7 @@ const PORT = process.env.PORT;
 const usersRouter = require("./routes/users")
 const recipesRouter = require("./routes/recipes")
 const calculatorRouter = require("./routes/calculator")
+const trackerRouter = require("./routes/tracker")
 require("dotenv").config();
 
 app.use(cors());
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/recipes", recipesRouter);
 app.use("/calculator", calculatorRouter)
+app.use("/tracker", trackerRouter)
 
 const schedule = require('node-schedule');
 // '0 0 * * *'
