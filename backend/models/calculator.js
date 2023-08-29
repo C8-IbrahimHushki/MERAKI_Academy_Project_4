@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const calculatorSchema = new mongoose.Schema({
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   gender: { type: String, required: true },
   height: { type: Number, required: true },
   weight: { type: Number, required: true },

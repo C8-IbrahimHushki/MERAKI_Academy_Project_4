@@ -16,7 +16,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false
   );
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   return (
     <Context.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken }}>

@@ -14,7 +14,10 @@ const saveUserData = (req, res) => {
     proteinIntake,
   } = req.body;
 
+  const user = req.token.userId;
+
   const userData = new calculatorModel({
+    user,
     gender,
     height,
     weight,

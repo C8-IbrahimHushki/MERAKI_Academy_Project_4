@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../App";
 
@@ -15,7 +15,7 @@ const Calculator = () => {
   const [calorieIntake, setCalorieIntake] = useState(null);
   const [proteinIntake, setProteinIntake] = useState(null);
   const [message, setMessage] = useState("");
-  const { isLoggedIn } = useContext(Context);
+  const { isLoggedIn, token } = useContext(Context);
 
   const userData = {
     gender: gender,
@@ -134,9 +134,10 @@ const Calculator = () => {
     setTimeout(clearMessage, 5000);
   };
 
+
   const saveData = () => {
     axios
-      .post(`http://localhost:5000/calculator`, userData)
+      .post(`http://localhost:5000/calculator`, userData,{headers: {Authorization: `Bearer ${token}`}})
       .then((response) => {
         setMessage(response.data.message);
       })
@@ -145,6 +146,17 @@ const Calculator = () => {
       });
   };
 
+  
+  const saveDataTimeout = () =>{
+    // setTimeout(saveData, 3000)
+  }
+
+  useEffect(() => {
+if (calorieIntake) {
+  saveData();
+}
+  }, [calorieIntake])
+  
   return (
     <div>
       <Link to="/">&lt;&lt; Back</Link>
@@ -269,7 +281,7 @@ const Calculator = () => {
                 calculateProteinIntake();
               }
               calculateCalorieIntake();
-              saveData();
+              //saveDataTimeout();
               clearMessageTimeout();
             }}
           >

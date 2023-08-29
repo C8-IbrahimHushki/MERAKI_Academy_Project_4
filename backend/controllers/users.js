@@ -57,7 +57,7 @@ const login = (req, res) => {
         };
 
        const options = {
-        expiresIn: "24h"
+        expiresIn: "12h"
        }
 
         const token = jwt.sign(payload, process.env.SECRET, options)
