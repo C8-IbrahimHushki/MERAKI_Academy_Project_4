@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../App";
+import { Context } from "../../App";
 
 const Tracker = () => {
   const [changeGoal, setChangeGoal] = useState(false);

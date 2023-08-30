@@ -1,13 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Recipes from "./components/Recipes";
-import Home from "./components/Home";
-import Favorites from "./components/Favorites";
-import Navbar from "./components/Navbar";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Calculator from "./components/Calculator";
-import Tracker from "./components/Tracker";
+import Recipes from "./components/Recipes/Index";
+import Home from "./components/Home/Index";
+import Favorites from "./components/Favorites/Index";
+import Navbar from "./components/Navbar/Index";
+import Register from "./components/Register/Index";
+import Login from "./components/Login/Index";
+import Calculator from "./components/Calculator/Index";
+import Tracker from "./components/Tracker/Index";
 import { createContext, useState } from "react";
 
 export const Context = createContext();

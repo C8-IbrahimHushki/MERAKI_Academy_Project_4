@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../App";
+import { Context } from "../../App";
 
 const Calculator = () => {
   const [gender, setGender] = useState("male");
@@ -147,9 +147,6 @@ const Calculator = () => {
   };
 
   
-  const saveDataTimeout = () =>{
-    // setTimeout(saveData, 3000)
-  }
 
   useEffect(() => {
 if (calorieIntake) {
@@ -281,7 +278,6 @@ if (calorieIntake) {
                 calculateProteinIntake();
               }
               calculateCalorieIntake();
-              //saveDataTimeout();
               clearMessageTimeout();
             }}
           >
