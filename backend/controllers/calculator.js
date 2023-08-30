@@ -49,4 +49,32 @@ const saveUserData = (req, res) => {
     });
 };
 
-module.exports = { saveUserData };
+const getUserData = (req, res) => {
+  const userId = req.token.userId;
+  calculatorModel
+    .find({user:userId})
+    .then((result) => {
+      if (!result.length) {
+        return res.status(404).json({
+          success: false,
+          message: "User data not entered"
+        })
+      }
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        message: "Data found",
+        Data: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: err,
+      });
+    });
+};
+
+module.exports = { saveUserData, getUserData };
