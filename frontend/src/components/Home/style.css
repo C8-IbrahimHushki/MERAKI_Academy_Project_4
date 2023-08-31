@@ -1,0 +1,25 @@
+.home {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
+  margin: 10%;
+}
+
+.home-navigation-buttons {
+    display: flex;
+  height: 300px;
+  width: 300px;
+  border-radius: 100%;
+  border: 2px rgb(28, 138, 172) solid;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-navigation-buttons:hover {
+    cursor: pointer;
+}
+
+.home-navigation-buttons p {
+font-size: 40px;
+color: rgb(28, 138, 172);
+}

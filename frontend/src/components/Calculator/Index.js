@@ -168,7 +168,9 @@ const Calculator = () => {
         }
         setUserInfo(response.data.userInfo[0]);
       })
-      .catch(() => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -345,6 +347,7 @@ const Calculator = () => {
             >
               Calculate
             </button>
+            {!userInfoMessage && isLoggedIn ? <p>Note: entering new data will erase previous progress tracking data</p> : null}
             <h3>{message}</h3>
             <h3>
               {calorieIntake !== null ? (

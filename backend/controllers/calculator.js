@@ -52,23 +52,21 @@ const saveUserData = (req, res) => {
 const getUserData = (req, res) => {
   const userId = req.token.userId;
   calculatorModel
-    .find({user:userId})
+    .find({ user: userId }).populate("user").exec()
     .then((result) => {
       if (!result.length) {
-        return res.status(404).json({
+        return res.status(200).json({
           success: false,
-          message: "User data not entered"
-        })
+          message: "User data not entered",
+        });
       }
-      console.log(result);
       res.status(200).json({
         success: true,
         message: "Data found",
-        Data: result,
+        userInfo: result,
       });
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({
         success: false,
         message: "Server error",
