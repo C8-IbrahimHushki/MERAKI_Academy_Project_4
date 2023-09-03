@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
+import "./style.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Register = () => {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
         setIsLoggedIn(true);
-        navigate("/calculator")
+        navigate("/calculator");
       })
       .catch((err) => {
         console.log(err);
@@ -44,65 +45,70 @@ const Register = () => {
 
   return (
     <div>
-      <Link to="/" className="back-button">&lt;&lt; Back</Link>
-      <h2>Register</h2>
-      <label for="userName">Username:&nbsp;</label>
-      <input
-        name="userName"
-        placeholder="Username"
-        onChange={(e) => {
-          setUserName(e.target.value);
-        }}
-      />
-      <br />
-      <label for="email">Email:&nbsp;</label>
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <br />
-      <label for="password">Password:&nbsp;</label>
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <br />
-      <label for="confirm-password">Confirm Password:&nbsp;</label>
-      <input
-        name="confirm-password"
-        type="password"
-        placeholder="Confrim Password"
-        onChange={(e) => {
-          setConfirmPassword(e.target.value);
-        }}
-      />
-      <br />
-      <button
-        onClick={() => {
-          if (password === confirmPassword) {
-            saveUser();
-          } else {
-            setMessage("Password confirmation does not match");
-            clearMessageTimeout();
-          }
-        }}
-      >
-        Register
-      </button>
-      <br />
-      <p>
-        Already have an account?{" "}
-        {<Link to="/users/login">Click here to log in</Link>}
-      </p>
-      <h2>{message}</h2>
+      {" "}
+      <Link to="/" className="back-button">
+        &lt;&lt; Back
+      </Link>
+      <div className="register">
+        <h2>Register</h2>
+        <label for="userName">Username:&nbsp;</label>
+        <input
+          name="userName"
+          placeholder="Username"
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
+        <br />
+        <label for="email">Email:&nbsp;</label>
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <br />
+        <label for="password">Password:&nbsp;</label>
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <br />
+        <label for="confirm-password">Confirm Password:&nbsp;</label>
+        <input
+          name="confirm-password"
+          type="password"
+          placeholder="Confrim Password"
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+          }}
+        />
+        <br />
+        <button
+          onClick={() => {
+            if (password === confirmPassword) {
+              saveUser();
+            } else {
+              setMessage("Password confirmation does not match");
+              clearMessageTimeout();
+            }
+          }}
+        >
+          Register
+        </button>
+        <br />
+        <p>
+          Already have an account?{" "}
+          {<Link to="/users/login">Click here to log in</Link>}
+        </p>
+        <h2>{message}</h2>
+      </div>
     </div>
   );
 };

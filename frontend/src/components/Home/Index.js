@@ -22,14 +22,6 @@ const Home = () => {
       >
         <p>Calculator</p>
       </div>
-      <div
-        className="home-navigation-buttons"
-        onClick={() => {
-          navigate("/tracker");
-        }}
-      >
-        <p>Tracker</p>
-      </div>
     </div>
   );
 };

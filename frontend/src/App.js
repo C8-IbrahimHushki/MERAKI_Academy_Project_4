@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Recipes from "./components/Recipes/Index";
 import Home from "./components/Home/Index";
-import Favorites from "./components/Favorites/Index";
+
 import Navbar from "./components/Navbar/Index";
 import Register from "./components/Register/Index";
 import Login from "./components/Login/Index";
@@ -16,8 +16,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false
   );
-
-  const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+  const [userName, setUserName] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [userInfoMessage, setUserInfoMessage] = useState("");
   const [userInfo, setUserInfo] = useState("");
@@ -42,7 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/favorites" element={<Favorites />} />
+          
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/calculator" element={<Calculator />} />

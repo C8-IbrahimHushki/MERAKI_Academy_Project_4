@@ -17,19 +17,20 @@
 
 ## 📝 Table of Contents
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [User Story](#user_story)
-- [Data Flow](#data_flow)
-- [Guided By](#guided_by)
+- [📝 Table of Contents](#-table-of-contents)
+- [🧐 About ](#-about-)
+- [🏁 Getting Started ](#-getting-started-)
+  - [Prerequisites](#prerequisites)
+  - [Installing:](#installing)
+- [🎈 Usage ](#-usage-)
+- [⛏️ Built Using ](#️-built-using-)
+- [User Story ](#user-story-)
+- [Data Flow ](#data-flow-)
+- [⚠️ Guided By ](#️-guided-by-)
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
-
-Ex. Are you looking for a quick and easy way to action, action, and action? The **(name of application)** is the greatest and most accurate application to do this for you. It helps you to **(list of activities)**. The **(name of application)** provides a simple design to ensure having the best user experience.
+Ex. Do you want to lose or gain weight without having to go and pay for a nutritionist? MyNutrition is the way to go since it calculates your daily calorie/protein needs for you.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -47,7 +48,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repo to your local machine using git bash.
 
 ```
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/C8-IbrahimHushki/MERAKI_Academy_Project_4.git
 ```
 
 2. Install packeges repeat this step in backend and frontend folder
@@ -72,13 +73,12 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
 Ex.
 
-- You don't have to register to navigate our web app
-- You can click on the **Home** tab provided in the navigation bar to view the home section
-- You can click on the **Add to cart** button to add this product to your cart but you have to be one of our users, so you should create an account
+- You don't have to register to look at recipe, but you have to in order to calculate your daily needs
+- You can click on the **Website's logo** to go to the home page.
+- There is a back button on the top left of each page that brings you back.
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -86,15 +86,16 @@ Ex.
 - [Express JS](https://expressjs.com/) - Server Framework
 - [React JS](https://https://reactjs.org/) - Web Framework
 - [Node JS](https://nodejs.org/en/) - Server Environment
+- [React Router Dom](https://reactrouter.com/en/main) - React Library
 
 ## User Story <a name = "#user_story"></a>
 
 Your trello board link
-<a href=''>Trello</a>
+<a href='https://trello.com/b/CH5jbRai/nutriton-app'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
 
-<img width=200px height=200px src="https://cacoo.com/assets/site/img/templates/screenshots/er-database-diagram.png" alt="Diagram"></a>
+<img width=200px height=200px src="https://trello.com/1/cards/64f4b13340c8db891faeab03/attachments/64f4b13eb0fa5ba8b51aaf84/previews/64f4b13fb0fa5ba8b51aafb5/download/Screenshot_2.png" alt="Diagram"></a>
 
 ## ⚠️ Guided By <a name = "guided_by"></a>
 

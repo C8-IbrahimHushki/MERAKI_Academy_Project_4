@@ -17,17 +17,16 @@ const Calculator = () => {
   const [calorieIntake, setCalorieIntake] = useState(null);
   const [proteinIntake, setProteinIntake] = useState(null);
   const [message, setMessage] = useState("");
-  const [] = useState("");
-  const [] = useState("");
 
   // ------------- CONTEXT -------------
   const {
     isLoggedIn,
     token,
-    setUserName,
+
     userInfoMessage,
     setUserInfoMessage,
-    userInfo, setUserInfo
+    userInfo,
+    setUserInfo,
   } = useContext(Context);
 
   const userData = {
@@ -215,7 +214,6 @@ const Calculator = () => {
                   <p>Current Weight: {userInfo.weight} kg</p>
                   <p>Goal Weight: {userInfo.goalWeight} kg</p>
                   <p>Goal: {userInfo.goal}</p>
-                  <p>Bodybuilding? {userInfo.proteinIntake} </p>
                   <p>Activity Level: {userInfo.activity}</p>
                   <p>Daily Calorie Intake: {userInfo.calorieIntake} Calories</p>
                   {userInfo.proteinIntake > 0 ? (

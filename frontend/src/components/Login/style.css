@@ -1,5 +1,16 @@
 .back-button {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 3%;
-  }
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 3%;
+}
+
+.login {
+  display: grid;
+  border: 2px rgb(53, 66, 8) solid;
+  border-radius: 10px;
+  padding: 10px;
+  justify-content: center;
+  width: 25%;
+  grid-template-columns: auto;
+  margin: 0 auto;
+}

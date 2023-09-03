@@ -5,6 +5,7 @@
 }
 
 .info-and-calculator {
+  margin-top: 3%;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto;
@@ -12,21 +13,22 @@
 }
 
 .user-info {
-  border: solid black;
+  border: 2px rgb(53, 66, 8) solid;
   border-radius: 10px;
   text-align: left;
   padding: 5%;
   margin-left: 10%;
-  width: 25%;
+  width: 35%;
 }
 
 .calculator {
   display: grid;
   row-gap: 10px;
-  border: solid black;
+  border: 2px rgb(53, 66, 8) solid;
   border-radius: 10px;
   margin-right: 10%;
-  width: 75%;
+  width: 65%;
+  padding-bottom: 20px;
 }
 
 

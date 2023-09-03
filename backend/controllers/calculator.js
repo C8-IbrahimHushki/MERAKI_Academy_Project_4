@@ -83,11 +83,11 @@ const updateUserData = (req, res) => {
 
   const updatedFields = {};
 
-  if (weight !== undefined) {
+  if (weight !== undefined ) {
     updatedFields.weight = weight;
   }
 
-  if (calorieIntake !== undefined) {
+  if (calorieIntake !== undefined ) {
     updatedFields.calorieIntake = calorieIntake;
   }
 

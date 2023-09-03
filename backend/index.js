@@ -7,10 +7,10 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Routers
-const usersRouter = require("./routes/users")
-const recipesRouter = require("./routes/recipes")
-const calculatorRouter = require("./routes/calculator")
-const trackerRouter = require("./routes/tracker")
+const usersRouter = require("./routes/users");
+
+const calculatorRouter = require("./routes/calculator");
+const trackerRouter = require("./routes/tracker");
 require("dotenv").config();
 
 app.use(cors());
@@ -18,14 +18,14 @@ app.use(express.json());
 
 // Routes middleware
 app.use("/users", usersRouter);
-app.use("/recipes", recipesRouter);
-app.use("/calculator", calculatorRouter)
-app.use("/tracker", trackerRouter)
 
-const schedule = require('node-schedule');
+app.use("/calculator", calculatorRouter);
+app.use("/tracker", trackerRouter);
+
+const schedule = require("node-schedule");
 // '0 0 * * *'
-const job = schedule.scheduleJob('01 * * * *', async () => {
-  console.log('Running scheduled update...')
+const job = schedule.scheduleJob("01 * * * *", async () => {
+  console.log("Running scheduled update...");
 });
 
 // Handles any other endpoints [unassigned - endpoints]

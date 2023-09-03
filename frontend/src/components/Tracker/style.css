@@ -3,3 +3,25 @@
     justify-content: flex-start;
     margin-left: 3%;
   }
+
+.tracker-page {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.trackers {
+  display: grid;
+  border: 2px rgb(53, 66, 8) solid;
+  border-radius: 10px;
+  padding: 20px;
+  row-gap: 5px ;
+  grid-template-rows: auto;
+}
+
+
+
+.trackers progress {
+  width: 100%;
+}
