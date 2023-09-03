@@ -16,12 +16,28 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false
   );
+
+  const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [userInfoMessage, setUserInfoMessage] = useState("");
+  const [userInfo, setUserInfo] = useState("");
 
   return (
-    <Context.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken }}>
+    <Context.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        userName,
+        setUserName,
+        token,
+        setToken,
+        userInfoMessage,
+        setUserInfoMessage,
+        userInfo,
+        setUserInfo,
+      }}
+    >
       <div className="App">
-        <h1>MyNutrition</h1>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

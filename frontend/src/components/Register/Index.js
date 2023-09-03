@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../../App";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const { setIsLoggedIn, setToken } = useContext(Context);
 
   const newUser = {
     userName: userName,
@@ -28,6 +31,10 @@ const Register = () => {
       .post(`http://localhost:5000/users/register`, newUser)
       .then((response) => {
         setMessage(response.data.message);
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        setIsLoggedIn(true);
+        navigate("/calculator")
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +44,7 @@ const Register = () => {
 
   return (
     <div>
-      <Link to="/">&lt;&lt; Back</Link>
+      <Link to="/" className="back-button">&lt;&lt; Back</Link>
       <h2>Register</h2>
       <label for="userName">Username:&nbsp;</label>
       <input

@@ -10,16 +10,18 @@
   height: 300px;
   width: 300px;
   border-radius: 100%;
-  border: 2px rgb(28, 138, 172) solid;
+  border: 2px rgb(53, 66, 8) solid;
   align-items: center;
   justify-content: center;
+  transition: 0.35s;
 }
 
 .home-navigation-buttons:hover {
     cursor: pointer;
+    background-color: rgb(233, 255, 152);
 }
 
 .home-navigation-buttons p {
 font-size: 40px;
-color: rgb(28, 138, 172);
+color: rgb(53, 66, 8);
 }

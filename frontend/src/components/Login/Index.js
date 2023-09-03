@@ -8,7 +8,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const { setIsLoggedIn, setToken } = useContext(Context);
+  const { setIsLoggedIn, setToken, token, setUserInfoMessage, setUserInfo } =
+    useContext(Context);
 
   const loggedUser = {
     email: email,
@@ -38,9 +39,31 @@ const Login = () => {
       });
   };
 
+  const getUserData = () => {
+    axios
+      .get(`http://localhost:5000/calculator`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        if (response.data.success === false) {
+          setUserInfoMessage(response.data.message);
+        }
+        localStorage.setItem(
+          "userName",
+          response.data.userInfo[0].user.userName
+        );
+        setUserInfo(response.data.userInfo[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
-      <Link to="/">&lt;&lt; Back</Link>
+      <Link to="/" className="back-button">
+        &lt;&lt; Back
+      </Link>
       <h2>Log In</h2>
       <label for="email">Email:&nbsp;</label>
       <input
@@ -65,6 +88,7 @@ const Login = () => {
       <button
         onClick={() => {
           loginUser();
+          getUserData();
           clearMessageTimeout();
         }}
       >

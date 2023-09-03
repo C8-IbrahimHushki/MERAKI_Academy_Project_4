@@ -10,13 +10,14 @@ const Tracker = () => {
 
   return (
     <div>
-      <Link to="/">&lt;&lt; Back</Link>
-      <h2>Personal Tracker</h2>
+      <Link to="/" className="back-button">&lt;&lt; Back</Link>
+      
       {isLoggedIn !== true ? (
         <h2>Log in or register to enjoy your own personal tracker</h2>
       ) : (
         <>
           {/* --------- WEIGHT PROGRESS --------- */}
+          <h2>Personal Tracker</h2>
           <h3>Weight Progress:</h3>
           <input name="weight" type="number" placeholder="Current Weight" />
           <label for="weight">&nbsp;kg</label>

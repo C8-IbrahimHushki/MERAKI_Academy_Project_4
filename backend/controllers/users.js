@@ -8,7 +8,6 @@ const register = (req, res) => {
     userName,
     email,
     password,
-    role: "64dcff6c38cb99484929991b", // from role
   });
 
   newUser

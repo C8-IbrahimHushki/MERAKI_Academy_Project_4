@@ -52,7 +52,9 @@ const saveUserData = (req, res) => {
 const getUserData = (req, res) => {
   const userId = req.token.userId;
   calculatorModel
-    .find({ user: userId }).populate("user").exec()
+    .find({ user: userId })
+    .populate("user")
+    .exec()
     .then((result) => {
       if (!result.length) {
         return res.status(200).json({
@@ -75,4 +77,39 @@ const getUserData = (req, res) => {
     });
 };
 
-module.exports = { saveUserData, getUserData };
+const updateUserData = (req, res) => {
+  const userId = req.token.userId;
+  const { weight, calorieIntake, proteinIntake } = req.body;
+
+  const updatedFields = {};
+
+  if (weight !== undefined) {
+    updatedFields.weight = weight;
+  }
+
+  if (calorieIntake !== undefined) {
+    updatedFields.calorieIntake = calorieIntake;
+  }
+
+  if (proteinIntake !== undefined) {
+    updatedFields.proteinIntake = proteinIntake;
+  }
+  calculatorModel
+    .updateOne({ user: userId }, req.body, { new: true })
+    .then((updatedInfo) => {
+      res.status(202).json({
+        success: true,
+        message: `Data updated`,
+        updatedInfo: updatedInfo,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
+};
+
+module.exports = { saveUserData, getUserData, updateUserData };

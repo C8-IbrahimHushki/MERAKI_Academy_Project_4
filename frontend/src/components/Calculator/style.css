@@ -1,0 +1,65 @@
+.back-button {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 3%;
+}
+
+.info-and-calculator {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  align-items: start;
+}
+
+.user-info {
+  border: solid black;
+  border-radius: 10px;
+  text-align: left;
+  padding: 5%;
+  margin-left: 10%;
+  width: 25%;
+}
+
+.calculator {
+  display: grid;
+  row-gap: 10px;
+  border: solid black;
+  border-radius: 10px;
+  margin-right: 10%;
+  width: 75%;
+}
+
+
+.calculator-input {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25%;
+  flex: 0 0;
+  align-items: center;
+}
+
+.calculator-input label {
+  white-space: nowrap;
+}
+
+.calculator-input input{
+  width: 48%;
+}
+
+.calculator-input select {
+  width: 50%;
+}
+
+.input-name {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25%;
+}
+
+#bodybuilding {
+  width: auto;
+}
+
+#no-data-message {
+  color: red;
+}
