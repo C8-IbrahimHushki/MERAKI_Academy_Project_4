@@ -68,7 +68,7 @@ Now the app is ready to use
 ## 🎈 Usage <a name="usage"></a>
 
 
-- You don't have to register to look at recipe, but you have to in order to calculate your daily needs
+- You don't have to register to look at recipes, but you have to in order to calculate your daily needs
 - You can click on the **Website's logo** to go to the home page.
 - There is a back button on the top left of each page that brings you back.
 
