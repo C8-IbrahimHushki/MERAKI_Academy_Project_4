@@ -1,19 +1,13 @@
 <p align="center">
-<a href="https://www.meraki-academy.org" target="_blank" rel="noopener noreferrer">
- <img width="400px" height="100px" src="https://www.meraki-academy.org/assets/img/logov02.svg" alt="Project logo">
- </a>
+
+ <img width="200px" height="200px" src="https://trello.com/1/cards/64fa3216b00240b3cd887c88/attachments/64fa32785a5f5a49e23ee3a3/download/MyNutrition_Logo.png" alt="Project logo">
+ 
 </p>
 
-<h3 align="center">Project Title
+<h3 align="center">MyNutrition
 </h3>
 
----
 
-<p align="center"> An awesome Project to describe README 
-    <br> 
-<a href=''>Demo</a>
-    <br> 
-</p>
 
 ## 📝 Table of Contents
 
@@ -30,7 +24,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Ex. Do you want to lose or gain weight without having to go and pay for a nutritionist? MyNutrition is the way to go since it calculates your daily calorie/protein needs for you.
+Do you want to lose or gain weight without having to go and pay for a nutritionist? MyNutrition is the way to go since it calculates your daily calorie/protein needs for you.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -90,7 +84,7 @@ Ex.
 
 ## User Story <a name = "#user_story"></a>
 
-Your trello board link
+Your Trello board link
 <a href='https://trello.com/b/CH5jbRai/nutriton-app'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
