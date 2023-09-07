@@ -83,8 +83,8 @@ Now the app is ready to use
 
 ## User Story <a name = "#user_story"></a>
 
-Trello board link
-<a href='https://trello.com/b/CH5jbRai/nutriton-app'>Trello</a>
+
+<a href='https://trello.com/b/CH5jbRai/nutriton-app'>Trello board link</a>
 
 ## Data Flow <a name = "#data_flow"></a>
 
