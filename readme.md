@@ -84,7 +84,7 @@ Ex.
 
 ## User Story <a name = "#user_story"></a>
 
-Your Trello board link
+Trello board link
 <a href='https://trello.com/b/CH5jbRai/nutriton-app'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
