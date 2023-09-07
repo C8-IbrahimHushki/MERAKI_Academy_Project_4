@@ -45,29 +45,28 @@ These instructions will get you a copy of the project up and running on your loc
 git clone https://github.com/C8-IbrahimHushki/MERAKI_Academy_Project_4.git
 ```
 
-2. Install packeges repeat this step in backend and frontend folder
+2. Install packages repeat this step in the backend and frontend folder
 
 ```
 npm i
 ```
 
-3. Run server using git bash inside backend folder
+3. Run the server using git bash inside the backend folder
 
 ```
 npm run dev
 ```
 
-4. Run application using git bash inside frontend folder
+4. Run the application using git bash inside the frontend folder
 
 ```
 npm run start
 ```
 
-Now app ready to use
+Now the app is ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-Ex.
 
 - You don't have to register to look at recipe, but you have to in order to calculate your daily needs
 - You can click on the **Website's logo** to go to the home page.
